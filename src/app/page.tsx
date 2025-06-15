@@ -8,65 +8,107 @@ const websites = [
   {
     id: 1,
     name: "Notion",
-    description: "Espace de travail tout-en-un pour notes, docs et projets",
+    description: "Espace de travail tout-en-un pour notes, documents, bases de données et gestion de projets",
     category: "Productivité",
     logo: "https://logo.clearbit.com/notion.so"
   },
   {
     id: 2,
     name: "ChatGPT",
-    description: "Assistant IA conversationnel pour répondre à vos questions",
+    description: "Assistant IA conversationnel avancé pour répondre à toutes vos questions et besoins",
     category: "IA",
     logo: "https://logo.clearbit.com/openai.com"
   },
   {
     id: 3,
     name: "Figma",
-    description: "Outil de conception collaborative pour interfaces",
+    description: "Outil de conception collaborative professionnel pour créer des interfaces utilisateur modernes",
     category: "Design",
     logo: "https://logo.clearbit.com/figma.com"
   },
   {
     id: 4,
     name: "Canva",
-    description: "Créateur de designs graphiques en ligne",
+    description: "Créateur de designs graphiques en ligne avec templates et outils professionnels intégrés",
     category: "Design",
     logo: "https://logo.clearbit.com/canva.com"
   },
   {
     id: 5,
     name: "Slack",
-    description: "Plateforme de communication d'équipe",
+    description: "Plateforme de communication d'équipe avec channels, messages directs et intégrations multiples",
     category: "Productivité",
     logo: "https://logo.clearbit.com/slack.com"
   },
   {
     id: 6,
     name: "Claude",
-    description: "Assistant IA pour l'analyse et la rédaction",
+    description: "Assistant IA spécialisé dans l'analyse de documents et la rédaction de contenu",
     category: "IA",
     logo: "https://logo.clearbit.com/anthropic.com"
   },
   {
     id: 7,
     name: "Linear",
-    description: "Outil de gestion de projet moderne",
+    description: "Outil de gestion de projet moderne avec interface épurée et fonctionnalités avancées",
     category: "Outils",
     logo: "https://logo.clearbit.com/linear.app"
   },
   {
     id: 8,
     name: "Midjourney",
-    description: "Générateur d'images par IA",
+    description: "Générateur d'images artistiques par IA avec styles et qualité de rendu exceptionnels",
     category: "IA",
     logo: "https://logo.clearbit.com/midjourney.com"
   },
   {
     id: 9,
     name: "Framer",
-    description: "Outil de prototypage et développement web",
+    description: "Outil de prototypage avancé et développement web avec animations et interactions fluides",
     category: "Design",
     logo: "https://logo.clearbit.com/framer.com"
+  },
+  {
+    id: 10,
+    name: "ClickUp",
+    description: "Solution complète de gestion de projet avec IA intégrée et fonctionnalités personnalisables",
+    category: "Productivité",
+    logo: "https://logo.clearbit.com/clickup.com"
+  },
+  {
+    id: 11,
+    name: "Otter.ai",
+    description: "Transcription automatique et résumé intelligent de réunions avec analyse des conversations",
+    category: "IA",
+    logo: "https://logo.clearbit.com/otter.ai"
+  },
+  {
+    id: 12,
+    name: "Grammarly",
+    description: "Correction et amélioration automatique de l'écriture grâce à l'intelligence artificielle avancée",
+    category: "IA",
+    logo: "https://logo.clearbit.com/grammarly.com"
+  },
+  {
+    id: 13,
+    name: "Trello",
+    description: "Gestion visuelle de projets en mode Kanban avec cartes et tableaux collaboratifs",
+    category: "Productivité",
+    logo: "https://logo.clearbit.com/trello.com"
+  },
+  {
+    id: 14,
+    name: "Zapier",
+    description: "Automatisation intelligente de tâches répétitives entre différentes applications web et services",
+    category: "Outils",
+    logo: "https://logo.clearbit.com/zapier.com"
+  },
+  {
+    id: 15,
+    name: "Miro",
+    description: "Tableau blanc collaboratif en ligne pour brainstorming, planification et travail d'équipe",
+    category: "Productivité",
+    logo: "https://logo.clearbit.com/miro.com"
   }
 ];
 
@@ -168,8 +210,8 @@ export default function Home() {
                       {website.category}
                     </span>
                   </div>
-                </div>                {/* Description centrée horizontalement */}
-                <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-sm sm:text-base text-center">
+                </div>                {/* Description avec style uniforme */}
+                <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-sm sm:text-base text-center px-6 max-w-xs mx-auto">
                   {website.description}
                 </p>
               </div>
