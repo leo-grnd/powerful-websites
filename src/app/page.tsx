@@ -106,7 +106,7 @@ export default function Home() {
               placeholder="Rechercher un site par nom ou description..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full px-4 sm:px-6 py-3 sm:py-4 text-base sm:text-lg rounded-2xl border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 focus:border-blue-500 focus:outline-none shadow-lg transition-all duration-200"
+              className="w-full px-4 sm:px-6 py-5 sm:py-6 text-base sm:text-lg rounded-2xl border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 focus:border-blue-500 focus:outline-none shadow-lg transition-all duration-200"
             />
             <div className="absolute right-3 sm:right-4 top-1/2 transform -translate-y-1/2">
               <svg className="w-5 h-5 sm:w-6 sm:h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -139,39 +139,44 @@ export default function Home() {
             {filteredWebsites.map((website) => (
               <div
                 key={website.id}
-                className="bg-white dark:bg-gray-800 rounded-2xl p-4 sm:p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:transform hover:-translate-y-1 border border-gray-100 dark:border-gray-700 w-full max-w-sm mx-auto"
+                className="bg-white dark:bg-gray-800 rounded-2xl p-4 sm:p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:transform hover:-translate-y-1 border border-gray-100 dark:border-gray-700 w-full max-w-sm mx-auto relative"
               >
-              <div className="flex items-center mb-4">
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center mr-4 overflow-hidden relative">
-                  <Image
-                    src={website.logo}
-                    alt={`${website.name} logo`}
-                    width={32}
-                    height={32}
-                    className="rounded-lg object-cover"
-                    onError={(e) => {
-                      // Masquer l'image et afficher l'icône de fallback
-                      e.currentTarget.style.display = 'none';
-                      const parent = e.currentTarget.parentElement;
-                      if (parent) {
-                        parent.innerHTML = `<span class="text-white font-bold text-lg">${website.name.charAt(0)}</span>`;
-                      }
-                    }}
-                  />
+                {/* Logo dans le coin supérieur gauche */}
+                <div className="absolute top-2 left-2 sm:top-3 sm:left-3">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center overflow-hidden relative">
+                    <Image
+                      src={website.logo}
+                      alt={`${website.name} logo`}
+                      width={32}
+                      height={32}
+                      className="rounded-lg object-cover"
+                      onError={(e) => {
+                        // Masquer l'image et afficher l'icône de fallback
+                        e.currentTarget.style.display = 'none';
+                        const parent = e.currentTarget.parentElement;
+                        if (parent) {
+                          parent.innerHTML = `<span class="text-white font-bold text-sm sm:text-lg">${website.name.charAt(0)}</span>`;
+                        }
+                      }}
+                    />
+                  </div>
                 </div>
-                <div>
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
+
+                {/* Nom et catégorie alignés à gauche avec marge */}
+                <div className="pt-16 sm:pt-18 mb-4 text-left" style={{ marginLeft: '4rem' }}>
+                  <h3 className="text-lg sm:text-xl font-semibold text-gray-900 dark:text-white leading-tight mb-1">
                     {website.name}
                   </h3>
-                  <span className="text-sm text-blue-600 dark:text-blue-400 font-medium">
+                  <span className="text-xs sm:text-sm text-blue-600 dark:text-blue-400 font-medium">
                     {website.category}
                   </span>
                 </div>
+
+                {/* Description alignée à gauche avec marge */}
+                <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-sm sm:text-base text-left" style={{ marginLeft: '4rem' }}>
+                  {website.description}
+                </p>
               </div>
-              <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                {website.description}
-              </p>
-            </div>
           ))}
           </div>
         </div>
