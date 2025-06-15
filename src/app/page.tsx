@@ -211,9 +211,11 @@ export default function Home() {
                     </span>
                   </div>
                 </div>                {/* Description avec style uniforme */}
-                <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-sm sm:text-base text-center px-6 max-w-xs mx-auto">
-                  {website.description}
-                </p>
+                <div className="flex justify-center">
+                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-sm sm:text-base text-center max-w-xs">
+                    {website.description}
+                  </p>
+                </div>
               </div>
           ))}
           </div>
