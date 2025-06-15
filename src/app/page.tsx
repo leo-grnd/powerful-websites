@@ -161,19 +161,17 @@ export default function Home() {
                     />
                   </div>
                 </div>                {/* Nom et catégorie alignés avec le haut du logo */}
-                <div className="flex items-start mb-4" style={{ paddingTop: '0.5rem', paddingLeft: '4rem' }}>
-                  <div className="flex flex-col">
-                    <h3 className="text-lg sm:text-xl font-semibold text-gray-900 dark:text-white leading-none mb-1" style={{ lineHeight: '1' }}>
+                <div className="flex items-start mb-4" style={{ paddingTop: '0.5rem', paddingLeft: '4.5rem' }}>
+                  <div className="flex flex-col w-full">
+                    <h3 className="text-lg sm:text-xl font-semibold text-gray-900 dark:text-white leading-none mb-1 text-left" style={{ lineHeight: '1' }}>
                       {website.name}
                     </h3>
-                    <span className="text-xs sm:text-sm text-blue-600 dark:text-blue-400 font-medium">
+                    <span className="text-xs sm:text-sm text-blue-600 dark:text-blue-400 font-medium text-left">
                       {website.category}
                     </span>
                   </div>
-                </div>
-
-                {/* Description alignée à gauche avec marge */}
-                <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-sm sm:text-base text-left" style={{ marginLeft: '4rem' }}>
+                </div>                {/* Description centrée horizontalement */}
+                <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-sm sm:text-base text-center">
                   {website.description}
                 </p>
               </div>
