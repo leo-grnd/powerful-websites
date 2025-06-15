@@ -10,7 +10,7 @@ const fs = require('fs');
 
 // Import dynamique pour éviter les problèmes avec ESM
 async function main() {
-  const { getDatabase, WebsiteService } = await import('../src/lib/database.ts');
+  const { getDatabase, WebsiteService } = await import('../src/lib/database');
   
   const shouldReset = process.argv.includes('--reset');
   

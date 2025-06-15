@@ -170,6 +170,34 @@ function insertInitialData() {
       category: "Productivity",
       logo: "https://logo.clearbit.com/miro.com",
       url: "https://miro.com"
+    },
+    {
+      name: "GitHub",
+      description: "Version control platform for collaborative software development with Git",
+      category: "Dev Tools",
+      logo: "https://logo.clearbit.com/github.com",
+      url: "https://github.com"
+    },
+    {
+      name: "VS Code",
+      description: "Lightweight but powerful source code editor with extensions and debugging",
+      category: "Dev Tools",
+      logo: "https://logo.clearbit.com/code.visualstudio.com",
+      url: "https://code.visualstudio.com"
+    },
+    {
+      name: "Cursor",
+      description: "AI-powered code editor that helps you write code faster with intelligent suggestions",
+      category: "Dev Tools",
+      logo: "https://logo.clearbit.com/cursor.com",
+      url: "https://cursor.com"
+    },
+    {
+      name: "Vercel",
+      description: "Frontend deployment platform optimized for modern web frameworks",
+      category: "Dev Tools",
+      logo: "https://logo.clearbit.com/vercel.com",
+      url: "https://vercel.com"
     }
   ];
 

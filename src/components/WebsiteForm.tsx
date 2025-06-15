@@ -1,4 +1,5 @@
 import { Website } from '@/lib/database';
+import { useState, useEffect } from 'react';
 
 interface WebsiteFormProps {
   website?: Website;
@@ -8,6 +9,27 @@ interface WebsiteFormProps {
 }
 
 export default function WebsiteForm({ website, onSubmit, onCancel, isLoading = false }: WebsiteFormProps) {
+  const [categories, setCategories] = useState<string[]>([]);
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await fetch('/api/categories');
+        if (response.ok) {
+          const data = await response.json();
+          // Filter out "All" category from the list for the form
+          setCategories(data.categories.filter((cat: string) => cat !== 'All'));
+        }
+      } catch (error) {
+        console.error('Error fetching categories:', error);
+        // Fallback to hardcoded categories if API fails
+        setCategories(['Productivity', 'AI', 'Design', 'Tools', 'Dev Tools']);
+      }
+    };
+
+    fetchCategories();
+  }, []);
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
@@ -18,12 +40,8 @@ export default function WebsiteForm({ website, onSubmit, onCancel, isLoading = f
       category: formData.get('category') as string,
       logo: formData.get('logo') as string,
       url: formData.get('url') as string,
-    };
-
-    onSubmit(data);
+    };    onSubmit(data);
   };
-
-  const categories = ['Productivity', 'AI', 'Design', 'Tools'];
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">

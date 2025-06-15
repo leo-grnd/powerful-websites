@@ -51,6 +51,19 @@ const nextConfig: NextConfig = {
       {
         protocol: 'https',
         hostname: 'img.icons8.com',
+      },
+      // Domaines pour les Dev Tools
+      {
+        protocol: 'https',
+        hostname: 'cursor.sh',
+      },
+      {
+        protocol: 'https',
+        hostname: 'code.visualstudio.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'github.com',
       }
     ],
   },
