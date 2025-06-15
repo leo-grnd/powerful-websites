@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { normalizeLogoUrl } from "@/lib/utils";
 
 interface WebsiteCardProps {
     id: number;
@@ -21,9 +22,8 @@ const WebsiteCard: React.FC<WebsiteCardProps> = ({ id, logo, name, category, des
             style={{ minWidth: '280px' }}
             onClick={handleClick}
         >
-            <div className="flex items-center space-x-4 mt-2">
-                <Image
-                    src={logo}
+            <div className="flex items-center space-x-4 mt-2">                <Image
+                    src={normalizeLogoUrl(logo)}
                     alt={`${name} logo`}
                     width={32}
                     height={32}

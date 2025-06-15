@@ -7,6 +7,7 @@ import { useDebounce } from "@/hooks/useDebounce";
 import WebsiteForm from "@/components/WebsiteForm";
 import { PencilIcon, TrashIcon } from '@heroicons/react/24/outline';
 import Image from "next/image";
+import { normalizeLogoUrl } from "@/lib/utils";
 
 export default function AdminPage() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -186,9 +187,8 @@ export default function AdminPage() {
                 {websites.map((website) => (
                   <tr key={website.id}>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="flex items-center">
-                        <Image
-                          src={website.logo}
+                      <div className="flex items-center">                        <Image
+                          src={normalizeLogoUrl(website.logo)}
                           alt={`${website.name} logo`}
                           width={32}
                           height={32}

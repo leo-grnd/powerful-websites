@@ -95,20 +95,22 @@ export default function WebsiteForm({ website, onSubmit, onCancel, isLoading = f
                 <option key={cat} value={cat}>{cat}</option>
               ))}
             </select>
-          </div>
-
-          <div>
+          </div>          <div>
             <label htmlFor="logo" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
               URL du logo
             </label>
             <input
-              type="url"
+              type="text"
               id="logo"
               name="logo"
               required
+              placeholder="https://exemple.com/logo.png ou /logos/monsite.com.png"
               defaultValue={website?.logo}
               className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white"
             />
+            <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+              URL complète ou chemin local (ex: /logos/monsite.com.png)
+            </p>
           </div>
 
           <div>

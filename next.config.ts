@@ -64,7 +64,39 @@ const nextConfig: NextConfig = {
       {
         protocol: 'https',
         hostname: 'github.com',
-      }
+      },
+      {
+        protocol: 'https',
+        hostname: 'vercel.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.google.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.youtube.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.facebook.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.twitter.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'cdn-1.webcatalog.io',
+      },
+      {
+        protocol: 'https',
+        hostname: 'brandfetch.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'cdn.brandfetch.io',
+      },
     ],
   },
 };
