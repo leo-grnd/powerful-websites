@@ -7,111 +7,111 @@ import SearchBar from "@/components/SearchBar";
 import CategoryButton from "@/components/CategoryButton"
 
 // Sample data for websites
-const websites = [
-  {
+const websites = [  {
     id: 1,
     name: "Notion",
     description: "All-in-one workspace for notes, documents, databases and project management",
     category: "Productivity",
-    logo: "https://logo.clearbit.com/notion.so"
-  },
-  {
+    logo: "https://logo.clearbit.com/notion.so",
+    url: "https://www.notion.so"
+  },  {
     id: 2,
     name: "ChatGPT",
     description: "Advanced conversational AI assistant to answer all your questions and needs",
     category: "AI",
-    logo: "https://logo.clearbit.com/openai.com"
-  },
-  {
+    logo: "https://logo.clearbit.com/openai.com",
+    url: "https://chat.openai.com"
+  },  {
     id: 3,
     name: "Figma",
     description: "Professional collaborative design tool for creating modern user interfaces",
     category: "Design",
-    logo: "https://logo.clearbit.com/figma.com"
-  },
-  {
+    logo: "https://logo.clearbit.com/figma.com",
+    url: "https://www.figma.com"
+  },  {
     id: 4,
     name: "Canva",
     description: "Online graphic design creator with templates and integrated professional tools",
     category: "Design",
-    logo: "https://logo.clearbit.com/canva.com"
-  },
-  {
+    logo: "https://logo.clearbit.com/canva.com",
+    url: "https://www.canva.com"
+  },  {
     id: 5,
     name: "Slack",
     description: "Team communication platform with channels, direct messages and multiple integrations",
     category: "Productivity",
-    logo: "https://logo.clearbit.com/slack.com"
-  },
-  {
+    logo: "https://logo.clearbit.com/slack.com",
+    url: "https://slack.com"
+  },  {
     id: 6,
     name: "Claude",
     description: "AI assistant specialized in document analysis and content writing",
     category: "AI",
-    logo: "https://logo.clearbit.com/anthropic.com"
-  },
-  {
+    logo: "https://logo.clearbit.com/anthropic.com",
+    url: "https://claude.ai"
+  },  {
     id: 7,
     name: "Linear",
     description: "Modern project management tool with clean interface and advanced features",
     category: "Tools",
-    logo: "https://logo.clearbit.com/linear.app"
-  },
-  {
+    logo: "https://logo.clearbit.com/linear.app",
+    url: "https://linear.app"
+  },  {
     id: 8,
     name: "Midjourney",
     description: "AI artistic image generator with exceptional styles and render quality",
     category: "AI",
-    logo: "https://logo.clearbit.com/midjourney.com"
-  },
-  {
+    logo: "https://logo.clearbit.com/midjourney.com",
+    url: "https://www.midjourney.com"
+  },  {
     id: 9,
     name: "Framer",
     description: "Advanced prototyping and web development tool with smooth animations and interactions",
     category: "Design",
-    logo: "https://logo.clearbit.com/framer.com"
-  },
-  {
+    logo: "https://logo.clearbit.com/framer.com",
+    url: "https://www.framer.com"
+  },  {
     id: 10,
     name: "ClickUp",
     description: "Complete project management solution with integrated AI and customizable features",
     category: "Productivity",
-    logo: "https://logo.clearbit.com/clickup.com"
-  },
-  {
+    logo: "https://logo.clearbit.com/clickup.com",
+    url: "https://clickup.com"
+  },  {
     id: 11,
     name: "Otter.ai",
     description: "Automatic transcription and intelligent meeting summary with conversation analysis",
     category: "AI",
-    logo: "https://logo.clearbit.com/otter.ai"
-  },
-  {
+    logo: "https://logo.clearbit.com/otter.ai",
+    url: "https://otter.ai"
+  },  {
     id: 12,
     name: "Grammarly",
     description: "Automatic writing correction and improvement through advanced artificial intelligence",
     category: "AI",
-    logo: "https://logo.clearbit.com/grammarly.com"
-  },
-  {
+    logo: "https://logo.clearbit.com/grammarly.com",
+    url: "https://www.grammarly.com"
+  },  {
     id: 13,
     name: "Trello",
     description: "Visual project management in Kanban mode with collaborative cards and boards",
     category: "Productivity",
-    logo: "https://logo.clearbit.com/trello.com"
-  },
-  {
+    logo: "https://logo.clearbit.com/trello.com",
+    url: "https://trello.com"
+  },  {
     id: 14,
     name: "Zapier",
     description: "Intelligent automation of repetitive tasks between different web applications and services",
     category: "Tools",
-    logo: "https://logo.clearbit.com/zapier.com"
-  },
-  {
+    logo: "https://logo.clearbit.com/zapier.com",
+    url: "https://zapier.com"
+  },  {
     id: 15,
     name: "Miro",
     description: "Online collaborative whiteboard for brainstorming, planning and teamwork",
     category: "Productivity",
-    logo: "https://logo.clearbit.com/miro.com"
+    logo: "https://logo.clearbit.com/miro.com",
+    url: "https://miro.com"
   }
 ];
 
@@ -158,15 +158,15 @@ export default function Home() {
         </div>        
         {/* Display websites */}
         <div className="w-full flex justify-center mb-8">
-          <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 w-full max-w-7xl">
-            {filteredWebsites.map((website, index) => (
+          <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 w-full max-w-7xl">            {filteredWebsites.map((website, index) => (
               <WebsiteCard 
                 key={index}
                 id={website.id} 
                 logo={website.logo} 
                 name={website.name} 
                 category={website.category} 
-                description={website.description}                
+                description={website.description}
+                url={website.url}
               />
           ))}
           </div>

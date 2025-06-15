@@ -6,14 +6,20 @@ interface WebsiteCardProps {
     name: string;
     category: string;
     description: string;
+    url: string;
 }
 
-const WebsiteCard: React.FC<WebsiteCardProps> = ({ id, logo, name, category, description }) => {
+const WebsiteCard: React.FC<WebsiteCardProps> = ({ id, logo, name, category, description, url }) => {
+    const handleClick = () => {
+        window.open(url, '_blank', 'noopener,noreferrer');
+    };
+
     return (
         <div
             key={id}
             className="bg-white dark:bg-gray-800 rounded-2xl p-4 py-8 sm:p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:transform hover:-translate-y-1 border border-gray-100 dark:border-gray-700 w-full max-w-sm mx-auto relative cursor-pointer"
             style={{ minWidth: '280px' }}
+            onClick={handleClick}
         >
             <div className="flex items-center space-x-4 mt-2">
                 <Image
