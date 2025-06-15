@@ -160,16 +160,16 @@ export default function Home() {
                       }}
                     />
                   </div>
-                </div>
-
-                {/* Nom et catégorie alignés à gauche avec marge */}
-                <div className="pt-16 sm:pt-18 mb-4 text-left" style={{ marginLeft: '4rem' }}>
-                  <h3 className="text-lg sm:text-xl font-semibold text-gray-900 dark:text-white leading-tight mb-1">
-                    {website.name}
-                  </h3>
-                  <span className="text-xs sm:text-sm text-blue-600 dark:text-blue-400 font-medium">
-                    {website.category}
-                  </span>
+                </div>                {/* Nom et catégorie alignés avec le haut du logo */}
+                <div className="flex items-start mb-4" style={{ paddingTop: '0.5rem', paddingLeft: '4rem' }}>
+                  <div className="flex flex-col">
+                    <h3 className="text-lg sm:text-xl font-semibold text-gray-900 dark:text-white leading-none mb-1" style={{ lineHeight: '1' }}>
+                      {website.name}
+                    </h3>
+                    <span className="text-xs sm:text-sm text-blue-600 dark:text-blue-400 font-medium">
+                      {website.category}
+                    </span>
+                  </div>
                 </div>
 
                 {/* Description alignée à gauche avec marge */}
