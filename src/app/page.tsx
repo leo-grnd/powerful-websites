@@ -130,15 +130,14 @@ export default function Home() {
               {category}
             </button>
           ))}
-        </div>
-
-        {/* Affichage des sites */}
+        </div>        {/* Affichage des sites */}
         <div className="w-full flex justify-center mb-8">
-          <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 max-w-xs sm:max-w-sm md:max-w-4xl lg:max-w-5xl xl:max-w-7xl 2xl:max-w-7xl">
+          <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 w-full max-w-7xl">
             {filteredWebsites.map((website) => (
               <div
                 key={website.id}
                 className="bg-white dark:bg-gray-800 rounded-2xl p-4 sm:p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:transform hover:-translate-y-1 border border-gray-100 dark:border-gray-700 w-full max-w-sm mx-auto relative"
+                style={{ minWidth: '280px' }}
               >
                 {/* Logo dans le coin supérieur gauche */}
                 <div className="absolute top-2 left-2 sm:top-3 sm:left-3">
