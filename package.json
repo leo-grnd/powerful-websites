@@ -6,10 +6,16 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "init-db": "node scripts/init-db.js",
+    "reset-db": "node scripts/init-db.js --reset",
+    "export-data": "node scripts/export-data.js export",
+    "import-data": "node scripts/export-data.js import"
   },
   "dependencies": {
     "@react-three/fiber": "^9.1.2",
+    "@types/better-sqlite3": "^7.6.13",
+    "better-sqlite3": "^11.10.0",
     "next": "15.3.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

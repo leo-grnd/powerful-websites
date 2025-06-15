@@ -1,138 +1,64 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import WebsiteCard from "@/components/WebsiteCard";
 import SearchBar from "@/components/SearchBar";
-import CategoryButton from "@/components/CategoryButton"
-
-// Sample data for websites
-const websites = [  {
-    id: 1,
-    name: "Notion",
-    description: "All-in-one workspace for notes, documents, databases and project management",
-    category: "Productivity",
-    logo: "https://logo.clearbit.com/notion.so",
-    url: "https://www.notion.so"
-  },  {
-    id: 2,
-    name: "ChatGPT",
-    description: "Advanced conversational AI assistant to answer all your questions and needs",
-    category: "AI",
-    logo: "https://logo.clearbit.com/openai.com",
-    url: "https://chat.openai.com"
-  },  {
-    id: 3,
-    name: "Figma",
-    description: "Professional collaborative design tool for creating modern user interfaces",
-    category: "Design",
-    logo: "https://logo.clearbit.com/figma.com",
-    url: "https://www.figma.com"
-  },  {
-    id: 4,
-    name: "Canva",
-    description: "Online graphic design creator with templates and integrated professional tools",
-    category: "Design",
-    logo: "https://logo.clearbit.com/canva.com",
-    url: "https://www.canva.com"
-  },  {
-    id: 5,
-    name: "Slack",
-    description: "Team communication platform with channels, direct messages and multiple integrations",
-    category: "Productivity",
-    logo: "https://logo.clearbit.com/slack.com",
-    url: "https://slack.com"
-  },  {
-    id: 6,
-    name: "Claude",
-    description: "AI assistant specialized in document analysis and content writing",
-    category: "AI",
-    logo: "https://logo.clearbit.com/anthropic.com",
-    url: "https://claude.ai"
-  },  {
-    id: 7,
-    name: "Linear",
-    description: "Modern project management tool with clean interface and advanced features",
-    category: "Tools",
-    logo: "https://logo.clearbit.com/linear.app",
-    url: "https://linear.app"
-  },  {
-    id: 8,
-    name: "Midjourney",
-    description: "AI artistic image generator with exceptional styles and render quality",
-    category: "AI",
-    logo: "https://logo.clearbit.com/midjourney.com",
-    url: "https://www.midjourney.com"
-  },  {
-    id: 9,
-    name: "Framer",
-    description: "Advanced prototyping and web development tool with smooth animations and interactions",
-    category: "Design",
-    logo: "https://logo.clearbit.com/framer.com",
-    url: "https://www.framer.com"
-  },  {
-    id: 10,
-    name: "ClickUp",
-    description: "Complete project management solution with integrated AI and customizable features",
-    category: "Productivity",
-    logo: "https://logo.clearbit.com/clickup.com",
-    url: "https://clickup.com"
-  },  {
-    id: 11,
-    name: "Otter.ai",
-    description: "Automatic transcription and intelligent meeting summary with conversation analysis",
-    category: "AI",
-    logo: "https://logo.clearbit.com/otter.ai",
-    url: "https://otter.ai"
-  },  {
-    id: 12,
-    name: "Grammarly",
-    description: "Automatic writing correction and improvement through advanced artificial intelligence",
-    category: "AI",
-    logo: "https://logo.clearbit.com/grammarly.com",
-    url: "https://www.grammarly.com"
-  },  {
-    id: 13,
-    name: "Trello",
-    description: "Visual project management in Kanban mode with collaborative cards and boards",
-    category: "Productivity",
-    logo: "https://logo.clearbit.com/trello.com",
-    url: "https://trello.com"
-  },  {
-    id: 14,
-    name: "Zapier",
-    description: "Intelligent automation of repetitive tasks between different web applications and services",
-    category: "Tools",
-    logo: "https://logo.clearbit.com/zapier.com",
-    url: "https://zapier.com"
-  },  {
-    id: 15,
-    name: "Miro",
-    description: "Online collaborative whiteboard for brainstorming, planning and teamwork",
-    category: "Productivity",
-    logo: "https://logo.clearbit.com/miro.com",
-    url: "https://miro.com"
-  }
-];
-
-const categories = ["All", "Productivity", "AI", "Design", "Tools"];
+import CategoryButton from "@/components/CategoryButton";
+import { useWebsites } from "@/hooks/useWebsites";
 
 export default function Home() {
-  const [searchTerm, setSearchTerm] = useState("");  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  
+  const { websites, categories, loading, error } = useWebsites(searchTerm, selectedCategory);
 
-  const filteredWebsites = useMemo(() => {
-    return websites.filter(website => {
-      const matchesSearch = website.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                           website.description.toLowerCase().includes(searchTerm.toLowerCase());
-      const matchesCategory = selectedCategory === "All" || website.category === selectedCategory;
-      return matchesSearch && matchesCategory;
-    });
-  }, [searchTerm, selectedCategory]);
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800 flex items-center justify-center">
+        <div className="text-center">
+          <div className="text-6xl mb-4">⏳</div>
+          <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-2">
+            Chargement...
+          </h3>
+          <p className="text-gray-600 dark:text-gray-300">
+            Récupération des sites web
+          </p>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800 flex items-center justify-center">
+        <div className="text-center">
+          <div className="text-6xl mb-4">❌</div>
+          <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-2">
+            Erreur
+          </h3>
+          <p className="text-gray-600 dark:text-gray-300">
+            {error}
+          </p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
       <div className="w-full max-w-none mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center">
         
+        {/* Admin link */}
+        <div className="absolute top-4 right-4">
+          <a
+            href="/admin"
+            className="px-4 py-2 bg-gray-800 text-white rounded-md hover:bg-gray-700 transition-colors text-sm"
+          >
+            Admin
+          </a>
+        </div>
+
         {/* Main title */}
         <div className="w-full flex flex-col items-center mb-8">
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent pt-20 mb-4 text-center">
@@ -155,12 +81,12 @@ export default function Home() {
               onClick={() => setSelectedCategory(category)}
             />
           ))}
-        </div>        
-        {/* Display websites */}
+        </div>        {/* Display websites */}
         <div className="w-full flex justify-center mb-8">
-          <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 w-full max-w-7xl">            {filteredWebsites.map((website, index) => (
+          <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 w-full max-w-7xl">
+            {websites.map((website, index) => (
               <WebsiteCard 
-                key={index}
+                key={website.id}
                 id={website.id} 
                 logo={website.logo} 
                 name={website.name} 
@@ -168,10 +94,12 @@ export default function Home() {
                 description={website.description}
                 url={website.url}
               />
-          ))}
+            ))}
           </div>
-        </div>        {/* Message if no result */}
-        {filteredWebsites.length === 0 && (
+        </div>
+        
+        {/* Message if no result */}
+        {websites.length === 0 && (
           <div className="text-center py-12">
             <div className="text-6xl mb-4">🔍</div>
             <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-2">
@@ -182,6 +110,7 @@ export default function Home() {
             </p>
           </div>
         )}
+        
       </div>
     </div>
   );
