@@ -13,6 +13,7 @@
     "import-data": "node scripts/export-data.js import"
   },
   "dependencies": {
+    "@heroicons/react": "^2.2.0",
     "@react-three/fiber": "^9.1.2",
     "@types/better-sqlite3": "^7.6.13",
     "better-sqlite3": "^11.10.0",

@@ -12,52 +12,9 @@ export default function Home() {
   const [selectedCategory, setSelectedCategory] = useState("All");
   
   const { websites, categories, loading, error } = useWebsites(searchTerm, selectedCategory);
-
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800 flex items-center justify-center">
-        <div className="text-center">
-          <div className="text-6xl mb-4">⏳</div>
-          <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-2">
-            Chargement...
-          </h3>
-          <p className="text-gray-600 dark:text-gray-300">
-            Récupération des sites web
-          </p>
-        </div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800 flex items-center justify-center">
-        <div className="text-center">
-          <div className="text-6xl mb-4">❌</div>
-          <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-2">
-            Erreur
-          </h3>
-          <p className="text-gray-600 dark:text-gray-300">
-            {error}
-          </p>
-        </div>
-      </div>
-    );
-  }
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
       <div className="w-full max-w-none mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center">
-        
-        {/* Admin link */}
-        <div className="absolute top-4 right-4">
-          <a
-            href="/admin"
-            className="px-4 py-2 bg-gray-800 text-white rounded-md hover:bg-gray-700 transition-colors text-sm"
-          >
-            Admin
-          </a>
-        </div>
 
         {/* Main title */}
         <div className="w-full flex flex-col items-center mb-8">
@@ -81,21 +38,49 @@ export default function Home() {
               onClick={() => setSelectedCategory(category)}
             />
           ))}
-        </div>        {/* Display websites */}
+        </div>
+
+        {/* Display websites */}
         <div className="w-full flex justify-center mb-8">
-          <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 w-full max-w-7xl">
-            {websites.map((website, index) => (
-              <WebsiteCard 
-                key={website.id}
-                id={website.id} 
-                logo={website.logo} 
-                name={website.name} 
-                category={website.category} 
-                description={website.description}
-                url={website.url}
-              />
-            ))}
-          </div>
+          {loading ? (
+            <div className="flex items-center justify-center py-20">
+              <div className="text-center">
+                <div className="text-6xl mb-4">⏳</div>
+                <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-2">
+                  Chargement...
+                </h3>
+                <p className="text-gray-600 dark:text-gray-300">
+                  Récupération des sites web
+                </p>
+              </div>
+            </div>
+          ) : error ? (
+            <div className="flex items-center justify-center py-20">
+              <div className="text-center">
+                <div className="text-6xl mb-4">❌</div>
+                <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-2">
+                  Erreur
+                </h3>
+                <p className="text-gray-600 dark:text-gray-300">
+                  {error}
+                </p>
+              </div>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 w-full max-w-7xl">
+              {websites.map((website, index) => (
+                <WebsiteCard 
+                  key={website.id}
+                  id={website.id} 
+                  logo={website.logo} 
+                  name={website.name} 
+                  category={website.category} 
+                  description={website.description}
+                  url={website.url}
+                />
+              ))}
+            </div>
+          )}
         </div>
         
         {/* Message if no result */}

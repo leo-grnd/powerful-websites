@@ -133,7 +133,6 @@ button:disabled {
 input, textarea {
   font-family: inherit;
   border-radius: var(--radius-lg);
-  border: 2px solid var(--border);
   background: var(--card);
   color: var(--card-foreground);
   transition: all var(--transition-normal);
