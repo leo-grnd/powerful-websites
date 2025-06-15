@@ -6,126 +6,125 @@ import WebsiteCard from "@/components/WebsiteCard";
 import SearchBar from "@/components/SearchBar";
 import CategoryButton from "@/components/CategoryButton"
 
-// Données d'exemple pour les sites
+// Sample data for websites
 const websites = [
   {
     id: 1,
     name: "Notion",
-    description: "Espace de travail tout-en-un pour notes, documents, bases de données et gestion de projets",
-    category: "Productivité",
+    description: "All-in-one workspace for notes, documents, databases and project management",
+    category: "Productivity",
     logo: "https://logo.clearbit.com/notion.so"
   },
   {
     id: 2,
     name: "ChatGPT",
-    description: "Assistant IA conversationnel avancé pour répondre à toutes vos questions et besoins",
-    category: "IA",
+    description: "Advanced conversational AI assistant to answer all your questions and needs",
+    category: "AI",
     logo: "https://logo.clearbit.com/openai.com"
   },
   {
     id: 3,
     name: "Figma",
-    description: "Outil de conception collaborative professionnel pour créer des interfaces utilisateur modernes",
+    description: "Professional collaborative design tool for creating modern user interfaces",
     category: "Design",
     logo: "https://logo.clearbit.com/figma.com"
   },
   {
     id: 4,
     name: "Canva",
-    description: "Créateur de designs graphiques en ligne avec templates et outils professionnels intégrés",
+    description: "Online graphic design creator with templates and integrated professional tools",
     category: "Design",
     logo: "https://logo.clearbit.com/canva.com"
   },
   {
     id: 5,
     name: "Slack",
-    description: "Plateforme de communication d'équipe avec channels, messages directs et intégrations multiples",
-    category: "Productivité",
+    description: "Team communication platform with channels, direct messages and multiple integrations",
+    category: "Productivity",
     logo: "https://logo.clearbit.com/slack.com"
   },
   {
     id: 6,
     name: "Claude",
-    description: "Assistant IA spécialisé dans l'analyse de documents et la rédaction de contenu",
-    category: "IA",
+    description: "AI assistant specialized in document analysis and content writing",
+    category: "AI",
     logo: "https://logo.clearbit.com/anthropic.com"
   },
   {
     id: 7,
     name: "Linear",
-    description: "Outil de gestion de projet moderne avec interface épurée et fonctionnalités avancées",
-    category: "Outils",
+    description: "Modern project management tool with clean interface and advanced features",
+    category: "Tools",
     logo: "https://logo.clearbit.com/linear.app"
   },
   {
     id: 8,
     name: "Midjourney",
-    description: "Générateur d'images artistiques par IA avec styles et qualité de rendu exceptionnels",
-    category: "IA",
+    description: "AI artistic image generator with exceptional styles and render quality",
+    category: "AI",
     logo: "https://logo.clearbit.com/midjourney.com"
   },
   {
     id: 9,
     name: "Framer",
-    description: "Outil de prototypage avancé et développement web avec animations et interactions fluides",
+    description: "Advanced prototyping and web development tool with smooth animations and interactions",
     category: "Design",
     logo: "https://logo.clearbit.com/framer.com"
   },
   {
     id: 10,
     name: "ClickUp",
-    description: "Solution complète de gestion de projet avec IA intégrée et fonctionnalités personnalisables",
-    category: "Productivité",
+    description: "Complete project management solution with integrated AI and customizable features",
+    category: "Productivity",
     logo: "https://logo.clearbit.com/clickup.com"
   },
   {
     id: 11,
     name: "Otter.ai",
-    description: "Transcription automatique et résumé intelligent de réunions avec analyse des conversations",
-    category: "IA",
+    description: "Automatic transcription and intelligent meeting summary with conversation analysis",
+    category: "AI",
     logo: "https://logo.clearbit.com/otter.ai"
   },
   {
     id: 12,
     name: "Grammarly",
-    description: "Correction et amélioration automatique de l'écriture grâce à l'intelligence artificielle avancée",
-    category: "IA",
+    description: "Automatic writing correction and improvement through advanced artificial intelligence",
+    category: "AI",
     logo: "https://logo.clearbit.com/grammarly.com"
   },
   {
     id: 13,
     name: "Trello",
-    description: "Gestion visuelle de projets en mode Kanban avec cartes et tableaux collaboratifs",
-    category: "Productivité",
+    description: "Visual project management in Kanban mode with collaborative cards and boards",
+    category: "Productivity",
     logo: "https://logo.clearbit.com/trello.com"
   },
   {
     id: 14,
     name: "Zapier",
-    description: "Automatisation intelligente de tâches répétitives entre différentes applications web et services",
-    category: "Outils",
+    description: "Intelligent automation of repetitive tasks between different web applications and services",
+    category: "Tools",
     logo: "https://logo.clearbit.com/zapier.com"
   },
   {
     id: 15,
     name: "Miro",
-    description: "Tableau blanc collaboratif en ligne pour brainstorming, planification et travail d'équipe",
-    category: "Productivité",
+    description: "Online collaborative whiteboard for brainstorming, planning and teamwork",
+    category: "Productivity",
     logo: "https://logo.clearbit.com/miro.com"
   }
 ];
 
-const categories = ["Tous", "Productivité", "IA", "Design", "Outils"];
+const categories = ["All", "Productivity", "AI", "Design", "Tools"];
 
 export default function Home() {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("Tous");
+  const [searchTerm, setSearchTerm] = useState("");  const [selectedCategory, setSelectedCategory] = useState("All");
 
   const filteredWebsites = useMemo(() => {
     return websites.filter(website => {
       const matchesSearch = website.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
                            website.description.toLowerCase().includes(searchTerm.toLowerCase());
-      const matchesCategory = selectedCategory === "Tous" || website.category === selectedCategory;
+      const matchesCategory = selectedCategory === "All" || website.category === selectedCategory;
       return matchesSearch && matchesCategory;
     });
   }, [searchTerm, selectedCategory]);
@@ -138,9 +137,8 @@ export default function Home() {
         <div className="w-full flex flex-col items-center mb-8">
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent pt-20 mb-4 text-center">
             Powerful Websites
-          </h1>
-          <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-xs sm:max-w-md md:max-w-lg lg:max-w-2xl mx-auto text-center mt-0 px-4">
-            Découvrez les meilleurs outils du web pour booster votre productivité
+          </h1>          <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-xs sm:max-w-md md:max-w-lg lg:max-w-2xl mx-auto text-center mt-0 px-4">
+            Discover the best web tools to boost your productivity
           </p>
         </div>
 
@@ -157,9 +155,8 @@ export default function Home() {
               onClick={() => setSelectedCategory(category)}
             />
           ))}
-        </div>
-        
-        {/* Affichage des sites */}
+        </div>        
+        {/* Display websites */}
         <div className="w-full flex justify-center mb-8">
           <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 w-full max-w-7xl">
             {filteredWebsites.map((website, index) => (
@@ -173,17 +170,15 @@ export default function Home() {
               />
           ))}
           </div>
-        </div>
-
-        {/* Message if no result */}
+        </div>        {/* Message if no result */}
         {filteredWebsites.length === 0 && (
           <div className="text-center py-12">
             <div className="text-6xl mb-4">🔍</div>
             <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-2">
-              Aucun site trouvé
+              No website found
             </h3>
             <p className="text-gray-600 dark:text-gray-300">
-              Essayez de modifier votre recherche ou sélectionnez une autre catégorie
+              Try modifying your search or select another category
             </p>
           </div>
         )}
