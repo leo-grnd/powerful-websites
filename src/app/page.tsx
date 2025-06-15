@@ -114,15 +114,14 @@ export default function Home() {
               </svg>
             </div>
           </div>
-        </div>
-
-        {/* Boutons de catégories */}
-        <div className="w-full flex flex-wrap justify-center items-center gap-2 sm:gap-3 mb-12 px-2">
+        </div>        {/* Boutons de catégories */}
+        <div className="w-full flex flex-wrap justify-center items-center gap-3 sm:gap-4 md:gap-5 mb-12 px-2" style={{ paddingTop: '1rem', paddingBottom: '1rem' }}>
           {categories.map((category) => (
             <button
               key={category}
               onClick={() => setSelectedCategory(category)}
-              className={`px-3 sm:px-4 md:px-6 py-2 sm:py-3 rounded-full font-medium transition-all duration-200 text-sm sm:text-base ${
+              style={{ paddingLeft: '1.5rem', paddingRight: '1.5rem', paddingTop: '0.4rem', paddingBottom: '0.4rem' }}
+              className={`rounded-full font-medium transition-all duration-200 text-sm sm:text-base ${
                 selectedCategory === category
                   ? "bg-blue-600 text-white shadow-lg transform scale-105"
                   : "bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 shadow-md"
