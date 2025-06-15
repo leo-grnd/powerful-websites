@@ -94,31 +94,6 @@ body {
   transition: background-color var(--transition-normal), color var(--transition-normal);
 }
 
-/* Typographie améliorée */
-h1, h2, h3, h4, h5, h6 {
-  font-weight: 600;
-  letter-spacing: -0.025em;
-  line-height: 1.2;
-}
-
-h1 {
-  font-size: clamp(2rem, 5vw, 4rem);
-  font-weight: 700;
-}
-
-h2 {
-  font-size: clamp(1.5rem, 4vw, 2.5rem);
-}
-
-h3 {
-  font-size: clamp(1.25rem, 3vw, 1.875rem);
-}
-
-p {
-  line-height: 1.7;
-  margin-bottom: 1rem;
-}
-
 /* Styles pour les liens */
 a {
   color: var(--primary-600);
